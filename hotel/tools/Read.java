@@ -63,7 +63,7 @@ public class Read {
         return value;
     }
 
-    public static double validateNoNegativeInt(String messege){
+    public static int validateNoNegativeInt(String messege){
         int value;
         value = readInt(messege);
         while (value < 0){

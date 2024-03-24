@@ -19,4 +19,9 @@ public class NormalBill implements Bill{
     public double GenerateTotal() {
         return total;
     }
+
+    @Override
+    public void addTotal() {
+        bill += "Total = "+total;
+    }
 }

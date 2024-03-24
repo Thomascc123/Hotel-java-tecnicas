@@ -1,9 +1,19 @@
 package hotel.persons;
 
 import hotel.Hotel;
+import hotel.bills.Bill;
+import hotel.bills.NormalBill;
 import hotel.rooms.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Locale;
+
 public class Recepcionist extends Employee{
+    private double valueAcumulated = 0;
+    private ArrayList<String> bills = new ArrayList<String>();
+
+
     public Recepcionist(String name, int document, int phone, String email, String adress, String position) {
         super(name, document, phone, email, adress, position);
     }
@@ -34,4 +44,33 @@ public class Recepcionist extends Employee{
 
         return texto;
     }
+
+    public String concatenateBills(){
+        String totalBills = "";
+        for (int i=0; i<this.bills.size(); i++){
+            totalBills += this.bills.get(i)+ "\n";
+        }
+        totalBills += "Total: "+this.valueAcumulated;
+        return totalBills;
+    }
+
+    public String generateDailyBalance(){
+        String dailyBalance = this.name + " inicio su turno a las "+ this.getStartWorkshift() + " y termino a las "+ LocalDate.now()+ "\n"+
+                "El listado de las habitaciones es: \n" + this.checkRoomAbailability()+ "\n Las facturas durante el turno fueron:\n" +
+                concatenateBills();
+
+        valueAcumulated = 0;
+        bills.clear();
+
+        return dailyBalance;
+    }
+
+    public void acumulate(double value){
+        this.valueAcumulated += value;
+    }
+
+    public void addBill(String bill){
+        this.bills.add(bill);
+    }
+
 }
