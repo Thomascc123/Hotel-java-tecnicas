@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public abstract class Employee extends Person{
     private static int idCount = 0;
-    private int emploteId;
+    private int employeeId;
     public String position;
     private LocalDate startWorkshift;
 
@@ -12,12 +12,12 @@ public abstract class Employee extends Person{
         super(name, document, phone, email, adress);
         this.position = position;
         this.startWorkshift = LocalDate.now();
-        this.emploteId = idCount++;
+        this.employeeId = idCount++;
     }
 
     public Employee() {
         this.startWorkshift = LocalDate.now();
-        this.emploteId = idCount++;
+        this.employeeId = idCount++;
     }
 
     public LocalDate getStartWorkshift() {

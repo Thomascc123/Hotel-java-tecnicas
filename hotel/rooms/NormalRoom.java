@@ -18,22 +18,27 @@ public class NormalRoom implements Room{
         this.pricePerDay = pricePerDay;
     }
 
+    @Override
     public int getRoomId() {
         return roomId;
     }
 
+    @Override
     public double getPricePerDay() {
         return pricePerDay;
     }
 
+    @Override
     public void setPricePerDay(double pricePerDay) {
         this.pricePerDay = pricePerDay;
     }
 
+    @Override
     public String getLocation() {
         return location;
     }
 
+    @Override
     public void setLocation(String location) {
         this.location = location;
     }
