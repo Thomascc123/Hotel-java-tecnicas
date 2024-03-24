@@ -16,6 +16,7 @@ public abstract class Customer extends Person{
         this.creditCart = creditCart;
         this.bill = bill;
         this.room = room;
+        this.room.ocupateRoom();
     }
 
     public String getCreditCart() {

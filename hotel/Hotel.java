@@ -18,7 +18,7 @@ public class Hotel {
     }
 
     static public Room createRoomNormal(){
-        NormalRoom roomAux = new NormalRoom();
+        Room roomAux = new NormalRoom();
 
         double auxPricePerDay = Read.validatePositiveDouble("ingrese el precio al dia de la habitacion: ");
         roomAux.setPricePerDay(auxPricePerDay);
@@ -149,8 +149,16 @@ public class Hotel {
                 }
             }while(validate == -1 || validate == 1);
 
-            Room room = rooms.get(accessIndexRoomWithID(roomId));
-            registerCustomer(room);
+            registerCustomer(rooms.get(accessIndexRoomWithID(roomId)));
+        }
+    }
+
+    public static void printCustomers(){
+        for (int i=0; i<customers.size(); i++){
+            System.out.println("Cliente: "+customers.get(i).getCustomerId()+", Nombre: "+customers.get(i).name
+                    +", Correo:"+customers.get(i).email
+                    +", documento: "+customers.get(i).document
+                    +", telefono: "+customers.get(i).phone+"\n");
         }
     }
 
@@ -164,6 +172,8 @@ public class Hotel {
         Bill bill = new NormalBill();
 
         NormalCustomer customer = new NormalCustomer(name, document, phone, email, direction, creditCard, bill, room);
+
+        customers.add(customer);
     }
 
     public static void customerExpense(int customerId, double price, String service){
@@ -195,7 +205,7 @@ public class Hotel {
     }
 
     public static void endShift(){
-        System.out.println(recepcionistActual.checkRoomAbailability());
+        System.out.println(recepcionistActual.generateDailyBalance());
         recepcionistActual = null;
     }
 }

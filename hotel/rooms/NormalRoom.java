@@ -9,11 +9,12 @@ public class NormalRoom implements Room{
 
     public NormalRoom() {
         this.roomId = ++idCount;
+        this.occupied = false;
     }
 
     public NormalRoom(double pricePerDay, String location) {
         this.roomId = ++idCount;
-        ocupateRoom();
+        this.occupied = false;
         this.location = location;
         this.pricePerDay = pricePerDay;
     }
